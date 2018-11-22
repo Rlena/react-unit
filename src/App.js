@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Character from './Character'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const App = ({side}) => {
+  if (!side) {
+    side = 'light'
   }
+
+  const characters = [
+    {name: 'Люк Скайвокер', side: 'light'},
+    {name: 'Йода', side: 'light'},
+    {name: 'Обиван Кеноби', side: 'light'},
+    {name: 'Палпатин', side: 'dark'},
+    {name: 'Дарт Вэйдер', side: 'dark'}
+  ]
+
+  const filteredChars = characters.filter(char => char.side === side)
+
+  return (
+    <ul>
+      {filteredChars.map((char, index) => (
+        <Character key={char.name + index} name={char.name} side={char.side}/>
+      ))}
+    </ul>
+  )
 }
 
-export default App;
+export default App
