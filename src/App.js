@@ -2,6 +2,7 @@ import React from 'react';
 import Character from './Character'
 
 const App = ({side}) => {
+  // если не передан параметр side, по умолчанию side = 'light'
   if (!side) {
     side = 'light'
   }
